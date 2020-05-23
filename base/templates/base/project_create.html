@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block main %}
+
+<div class="container">
+    <div class="bg-light text-dark border p-3">
+        <h1>Create Project</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.name|as_crispy_field }}
+            {{ form.deadline|as_crispy_field }}
+            <select class="form-control" name="course" id="course">
+                {% for course in courses %}
+                <option value="{{ course.pk }}">{{ course.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-success mt-4">Create</button>
+        </form>
+    </div>
+</div>
+{% endblock main %}

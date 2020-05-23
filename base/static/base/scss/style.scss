@@ -1,0 +1,517 @@
+// Brand Colors
+$amazonorange: #f8991d;
+$amazonnavy: #232f3e;
+$awsbucketblue: #329ad6;
+$awsbucketgrey: #4d6573;
+$awsbucketturqoise: #6bd6f2;
+$awsbucketdarkblue: #2a5c91;
+$catislandcoffeehousebrown: #8f653f;
+$catislandcoffeehouseblue: #346079;
+$facebook: #4267b2;
+$instagram: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+$tripadvisor: #34e0a1;
+$tiffany: #81d8d0;
+$yelp: #d32222;
+$zackhubblue: #21abde;
+
+// Custom Colors
+$aquamenth: #7fffd4;
+$blueelectric: #21abde;
+$bluemystic: #00e7ff;
+$bluemysticdark: #00d1e6;
+$bluedark: #172933;
+$bluedeep: #0c181e;
+$bluemidnight: #080f13;
+$bluephantom: #191970;
+$orangelushlava: #ff4500;
+
+// Viewports
+$mobile: 414px;
+$tablet: 700px;
+
+// Fonts
+$montserrat: "Montserrat", sans-serif;
+$roboto: "Roboto", sans-serif;
+$worksans: "Work Sans", sans-serif;
+
+// Guide
+$testborder: 1px solid black;
+$testheight: 93vh;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Settings */
+
+// Body (General)
+$body-font: Arial;
+$body-background: white;
+$selection-text: white;
+$selection-background: $blueelectric;
+$links: $blueelectric;
+$title-font: Arial;
+$icons: black;
+$icons-title: black;
+
+// Buttons (Common)
+$button-background: white;
+$button-hover-background: black;
+$button-text: black;
+$button-hover-text: white;
+$button-border: 1px solid black;
+
+// Hero
+$hero-overlay: #00000000;
+$hero-text-color: white;
+
+// Navbar
+$navbar-height: 7vh;
+$navbar-mobile-height: 50px;
+$navbar-background: whitesmoke;
+$navlink-size: 20px;
+$navlink-weight: 400;
+$navlink-color: black;
+$navlink-hover: $blueelectric;
+
+// Mobile Menu
+$mobile-menu-background: white;
+$mobile-navlink-hover: $navlink-hover;
+
+// Hamburger Icon
+$hamburger-line-height: 3px;
+$hambuger-line-width: 30px;
+$hamburger-line-space: 10px;
+$hamburger-border-radius: 100vh;
+$hamburger-color: black;
+$hamburger-background-hover: #00000030;
+
+// Footer
+$footer-padding: 40px 0;
+$footer-background: whitesmoke;
+
+// Copyright
+$copyright-height: 40px;
+$copyright-text: black;
+$copyright-background: whitesmoke;
+
+/* Defaults */
+
+::selection {
+  color: $selection-text;
+  background: $selection-background;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $body-font;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Common Elements */
+
+.buttons-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  display: inline-block;
+
+  &.basic {
+    padding: 15px;
+    font-size: 18px;
+    color: $button-text;
+    background: $button-background;
+
+    &:hover {
+      color: $button-hover-text;
+      background: $button-hover-background;
+    }
+  }
+}
+
+.logo {
+  font-size: 40px;
+  font-family: $title-font;
+}
+
+.icon {
+  color: $icons;
+  font-size: 25px;
+  transition: all 0.2s ease;
+  padding: 2px;
+
+  &.title {
+    color: $icons-title;
+  }
+
+  &.instagram:hover {
+    color: $instagram;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &.facebook:hover {
+    color: $facebook;
+  }
+
+  &.tripadvisor:hover {
+    color: $tripadvisor;
+  }
+
+  &.yelp:hover {
+    color: $yelp;
+  }
+}
+
+/* Navigation */
+
+header {
+  height: $navbar-height;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $navbar-background;
+  height: $navbar-height;
+  width: 100%;
+  box-shadow: 0 0 3px grey;
+  position: fixed;
+  z-index: 999;
+
+  @media screen and (max-width: $tablet) {
+    justify-content: center;
+  }
+
+  .logo {
+    margin-left: 50px;
+    color: black;
+
+    @media screen and (max-width: $tablet) {
+      margin: 0;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin-right: 20px;
+    height: 100%;
+
+    @media screen and (max-width: $tablet) {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      z-index: -1;
+      top: $navbar-height;
+      background-color: $mobile-menu-background;
+      z-index: 0;
+      box-shadow: inset 0 0 3px grey;
+      transition: transform 0.3s ease;
+      padding-bottom: 200px;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    li > * {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 10px;
+      color: $navlink-color;
+      font-size: $navlink-size;
+      font-weight: $navlink-weight;
+      background-color: initial;
+      transition: color 0.2s ease;
+
+      @media screen and (max-width: $tablet) {
+        margin: 20px;
+        font-size: 30px;
+      }
+    }
+
+    a {
+      &:hover {
+        color: $navlink-hover;
+      }
+
+      @media screen and (max-width: $tablet) {
+        &:hover {
+          color: $mobile-navlink-hover;
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: $navbar-height;
+    width: $navbar-height;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media screen and (max-width: $tablet) {
+      display: flex;
+    }
+
+    .hamburger-background {
+      height: 90%;
+      width: 90%;
+      background-color: none;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $hamburger-background-hover;
+      }
+
+      .hamburger-line {
+        height: $hamburger-line-height;
+        width: $hambuger-line-width;
+        position: relative;
+        background: $hamburger-color;
+        transition: all 0.3s ease;
+        border-radius: $hamburger-border-radius;
+
+        &::before,
+        &::after {
+          content: "";
+          height: $hamburger-line-height;
+          width: 100%;
+          position: absolute;
+          top: -$hamburger-line-space;
+          right: 0;
+          background: $hamburger-color;
+          transition: all 0.3s ease;
+          border-radius: $hamburger-border-radius;
+        }
+
+        &::after {
+          top: $hamburger-line-space;
+        }
+      }
+    }
+  }
+
+  .toggle {
+    display: none;
+    height: $navbar-height;
+    width: $navbar-height;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 6;
+    opacity: 0;
+    cursor: pointer;
+
+    @media screen and (max-width: $tablet) {
+      display: block;
+    }
+
+    &:checked {
+      & + .hamburger .hamburger-line {
+        transform: rotate(135deg);
+
+        &::before,
+        &::after {
+          top: 0;
+          transform: rotate(90deg);
+        }
+      }
+
+      & ~ .nav-links {
+        display: flex;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    &:hover + .hamburger .hamburger-background {
+      background-color: $hamburger-background-hover;
+    }
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  list-style: none;
+  margin-left: 50px;
+
+  * {
+    font-weight: 300;
+    font-size: 20px;
+    padding: 15px 0 0;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin: 0;
+    justify-content: center;
+  }
+
+  li + li:before {
+    padding: 8px;
+    content: "/\00a0";
+  }
+
+  a {
+    color: $links;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid white;
+
+    &:hover {
+      border-bottom: 1px solid $links;
+    }
+  }
+
+  p {
+    display: inline;
+  }
+}
+
+/* Main */
+
+main {
+  min-height: $testheight;
+
+  a {
+    color: $links;
+  }
+}
+
+/* 1. Home */
+
+.hero {
+  background: url("../img/generic.jpg") no-repeat;
+  background-position: 0 -90px;
+  position: relative;
+
+  &::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: $hero-overlay;
+  }
+
+  .content {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    color: $hero-text-color;
+    height: 100%;
+    width: 100%;
+    padding: 0 20px 0;
+
+    & > * {
+      z-index: 1;
+    }
+
+    .title {
+    }
+
+    .subtitle {
+    }
+
+    .button {
+      &:hover {
+      }
+    }
+  }
+}
+
+/* Footer */
+
+footer {
+  min-height: 4vh;
+}
+
+.footer {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: $footer-padding;
+  background-color: $footer-background;
+
+  @media screen and (max-width: 1001px) {
+    justify-content: space-around;
+  }
+
+  & > div {
+    // Don't put margin.
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 300px;
+    border: $testborder;
+  }
+
+  .logo img {
+    height: 100%;
+  }
+
+  .footer-menu {
+    width: 320px;
+    padding: 30px 20px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+
+    @media screen and (max-width: 1001px) {
+      border: none;
+    }
+
+    .nav-links {
+      display: grid;
+      justify-content: space-between;
+      align-content: space-between;
+      grid-template-columns: auto auto;
+      list-style: none;
+      height: 100%;
+
+      a {
+        color: $navlink-color;
+        font-size: 20px;
+        font-weight: 300;
+        transition: all 0.2s ease;
+
+        &:hover {
+          color: $navlink-hover;
+        }
+      }
+    }
+  }
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $copyright-height;
+  color: $copyright-text;
+  background: $copyright-background;
+}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container">
+
+        <!-- Breadcrumbs -->
+        <nav>
+            <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item"><a href="{% url 'base:dashboard' %}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'base:project_index' %}">Projects</a></li>
+                <li class="breadcrumb-item active">{{ project.name }}</li>
+            </ol>
+        </nav>
+
+        <!-- Project Container -->
+        <div class="jumbotron mt-4 bg-dark text-white">
+
+            <!-- Project Title -->
+            <h1>{{ project.name }}</h1>
+
+            <!-- Project Buttons -->
+            <div>
+                <a href="{% url 'base:project_update' project.pk %}" class="btn btn-info">Update</a>
+                <a href="{% url 'base:project_delete' project.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+
+            <!-- Project Data -->
+            {% if project.deadline %}
+            <div class="row mt-3">
+                
+                <div class="col">
+                    <p>Deadline: {{ project.deadline }}</p>
+                    <p>Course: {{ project.course.name }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock main %}

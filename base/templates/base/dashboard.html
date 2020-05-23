@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+    {% if user.is_authenticated %}
+        <div class="alert alert-success">Hello, {{ user.first_name }}!</div>
+    {% endif %}
+    <h1 class="display-4">Dashboard</h1>
+    <div class="row">
+    <a href="{% url 'base:course_index' %}" class="col bg-dark m-1 rounded d-block p-3">
+        <h2 style="">Courses</h2>
+    </a>
+    <a href="{% url 'base:meeting_index' %}" class="col bg-primary m-1 rounded text-white d-block p-3">
+        <h2 style="">Meetings</h2>
+    </a>
+    </div>
+    <div class="row">
+    <a href="{% url 'base:project_index' %}" class="col bg-warning m-1 rounded text-white d-block p-3">
+        <h2 style="">Projects</h2>
+    </a>
+    <a href="{% url 'base:activity_index' %}" class="col bg-light m-1 rounded d-block p-3">
+        <h2 style="">Activities</h2>
+    </a>
+    </div>
+
+</div>
+{% endblock main %}

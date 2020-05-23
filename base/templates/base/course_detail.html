@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container">
+
+        <!-- Breadcrumbs -->
+        <nav>
+            <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item"><a href="{% url 'base:dashboard' %}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'base:course_index' %}">Courses</a></li>
+                <li class="breadcrumb-item active">{{ course.name }}</li>
+            </ol>
+        </nav>
+
+        <!-- Course Container -->
+        <div class="jumbotron mt-4 bg-dark text-white">
+
+            <!-- Course Title -->
+            <h1>{{ course.name }}</h1>
+
+            <!-- Course Buttons -->
+            <div>
+                <a href="{% url 'base:course_update' course.pk %}" class="btn btn-info">Update</a>
+                <a href="{% url 'base:course_delete' course.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+
+            <!-- Course Data -->
+            {% if course.start_time %}
+            <div class="row mt-3">
+                
+                <div class="col">
+                    <p>Start time: {{ course.start_time }}</p>
+                </div>
+                {% if course.end_time %}
+                <div class="col">
+                    <p>End time: {{ course.end_time }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock main %}

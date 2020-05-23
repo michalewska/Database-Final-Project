@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{{ meeting.name }}</h1>
+            <div>
+                <a href="{% url 'base:meeting_update' meeting.pk %}" class="btn btn-info">Update</a>
+                <a href="{% url 'base:meeting_delete' meeting.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+            {% if meeting.start_time %}
+            <div class="row">
+                
+                <div class="col">
+                    <p>Start time: {{ meeting.start_time }}</p>
+                </div>
+                {% if meeting.end_time %}
+                <div class="col">
+                    <p>Start time: {{ meeting.end_time }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock main %}

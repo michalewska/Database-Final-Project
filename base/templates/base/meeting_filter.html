@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container p-3">
+
+    <!-- Breadcrumbs -->
+        <nav>
+            <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item"><a href="{% url 'base:dashboard' %}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'base:meeting_index' %}">Meetings</a></li>
+                <li class="breadcrumb-item active">Meeting Search</li>
+            </ol>
+        </nav>
+
+        <!-- Page Heading Area -->
+        <div class="d-flex justify-content-between align-items-end">
+            <h1 class="m-0">Meeting Search</h1>
+            <a class="btn btn-success" href="{% url 'base:meeting_create' %}">Create Meeting</a>
+        </div>
+
+        <!-- Dark Box -->  
+        <div class="bg-dark my-3 p-2 pt-3 rounded">
+
+        <!-- Dark Box Header -->
+            <div class="box-header d-flex align-items-end justify-content-between">
+                <h2 class="text-light m-0">Meetings</h2>
+                <form action="{% url 'base:meeting_filter' %}" method="GET">
+                    <div class="input-group">
+                        <select name="f" id="fieldSelect1" class="form-control">
+                            <option value="name">Name</option>
+                            <option value="start_time">Start Time</option>
+                            <option value="end_time">End Time</option>
+                        </select>
+                        <input type="text" name="q" id="meetingQuery1" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-info text-white">Filter</button>
+                            <a href="{% url 'base:meeting_filter' %}" class="btn btn-secondary text-white">Reset</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <hr class="bg-light mt-2">
+            
+            <!-- Table -->
+            <table class="table bg-light">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Meeting</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for meeting in meetings %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href="{% url 'base:meeting_detail' meeting.pk %}">{{ meeting.name }}</a></td>
+                        <td>{{ meeting.start_time }}</td>
+                        <td>{{ meeting.end_time }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+{% endblock main %}

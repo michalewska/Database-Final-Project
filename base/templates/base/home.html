@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Home {% endblock %}
+
+{% block main %}
+<div class="jumbotron-fluid bg-dark" style="height: 93vh">
+        <div class="container d-flex flex-column justify-content-center align-items-center text-center text-light h-100">
+            <h1 class="display-4">Welcome to Your Project Manager</h1>
+            <p class="lead">The best way to keep your events and projects organized.<p>
+            <div class="text-center">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'base:dashboard' %}" class="btn btn-primary">Go to Dashboard</a>
+                {% else %}
+                    <a href="{% url 'base:create_account' %}" class="btn btn-info">Get started</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    </div>
+{% endblock %}

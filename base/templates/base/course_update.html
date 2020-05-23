@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block main %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Update course: {{ course.name }}</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.name|as_crispy_field }}
+                {{ form.start_time|as_crispy_field }}
+                {{ form.end_time|as_crispy_field }}
+                <button class="btn btn-info mt-4" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+{% endblock main %}
